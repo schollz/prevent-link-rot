@@ -19,6 +19,7 @@ def getPermalink(url):
     return url,url
   try:
     r = requests.get('https://web.archive.org/save/' + url)
+    print "Got permanent link for " + url
   except:
     return url,url
   if r.status_code == 403:
@@ -35,7 +36,7 @@ def replaceText(text_test):
       newurl = newurl[:-1]
     newurls.append(newurl)
 
-  p = Pool(10)
+  p = Pool(3)
   for result in p.map(getPermalink,newurls):
     text_test = text_test.replace(result[0],result[1])
 
