@@ -26,7 +26,7 @@ $ source venv/bin/activate
 (venv)$ python app.py
 ```
 
-Goto ```http://127.0.0.1:8012/``` to use the web page to conver links.
+Goto ```http://127.0.0.1:8012/``` to use the web page to convert links.
 
 ## Demo
 
