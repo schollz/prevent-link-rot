@@ -40,8 +40,9 @@ def replaceText(text_test):
       newurl = newurl[:-1]
     newurls.append(newurl)
 
+  print newurls
   p = Pool(3)
   for result in p.map(getPermalink,newurls):
     text_test = text_test.replace(result[0],result[1])
-  print "Finished"
+  p.terminate()
   return text_test

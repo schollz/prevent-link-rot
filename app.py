@@ -7,11 +7,12 @@ app.debug = True
 
 @app.route("/")
 def hello():
-    return render_template('base.html')
+    return render_template('index.html')
 
 @app.route('/permanize', methods=['POST', 'OPTIONS'])
 def my_service():
 	request.get_json(force=True)
+	print request.json
 	text = request.json['text']
 	return jsonify(text=replaceText(text))
 
