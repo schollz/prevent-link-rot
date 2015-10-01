@@ -12,6 +12,10 @@ Link rot can be combated in several ways.
 
 # Install and Run
 
+## Snapshot
+
+![Screenshot](http://i.imgur.com/LSM8HUU.jpg)
+
 ## Install
 
 ```bash
