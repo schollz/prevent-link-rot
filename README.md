@@ -14,6 +14,20 @@ Link rot can be combated in several ways.
 
 ## Install
 
+```bash
+$ virtualenv -p /usr/bin/python venv
+$ source venv/bin/activate
+(venv)$ pip install -r requirements.txt
+```
+
+## And run
+
+```bash
+(venv)$ python app.py
+```
+
+Goto ```http://127.0.0.1:8012/``` to use the web page to conver links.
+
 ## Demo
 
 Try the demo [here](http://permalinker.duckdns.org/).
