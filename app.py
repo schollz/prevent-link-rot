@@ -9,10 +9,11 @@ app.debug = True
 def hello():
     return render_template('base.html')
 
-@app.route('/permanize', methods=['GET', 'OPTIONS'])
+@app.route('/permanize', methods=['POST', 'OPTIONS'])
 def my_service():
-        text = request.args.get('text', '')
-        return jsonify(text=replaceText(text))
+	request.get_json(force=True)
+	text = request.json['text']
+	return jsonify(text=replaceText(text))
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=8012)

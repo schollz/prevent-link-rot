@@ -47,9 +47,15 @@
 </div>
 </div>
 <div id="loading">
+<br>
 <div class="row">
 <center>
-<img src="http://www.ibm.com/social-business/us/en/images/socbiz-loader.gif" width="90%">
+<h2>Generating your links, please wait!</h2>
+</center>
+</div>
+<div class="row">
+<center>
+<img src="http://www.ibm.com/social-business/us/en/images/socbiz-loader.gif" width=100px>
 </center>
 </div>
 </div>
@@ -86,9 +92,10 @@ $notloading.show();
       $("#submitbutton").click(function(e){
           e.preventDefault();
               $.ajax({
+                  type: 'POST',
                   url: '/permanize',
-                  data: {text:$("textarea#inputtext").val()},
-                  dataType: 'json',
+                  data: JSON.stringify({text:$("textarea#inputtext").val()}, null, '\t'),
+                  contentType: 'application/json;charset=UTF-8',
                   success: function(result){
                       console.log(result)
                       $("textarea#outputtext").val(result.text);
