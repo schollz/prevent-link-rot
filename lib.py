@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-import requests
 import sys
 import re
 from multiprocessing import Pool
+import requests
 
 
 
@@ -33,16 +33,31 @@ def getPermalink(url):
   
 
 def replaceText(text_test):
-  newurls = []
+  urls = []
   for url in  re.findall(r'(https?://[^\s]+)', text_test):
     newurl = url.split('"')[0].split('<')[0]
     while newurl[-1] == '.' or newurl[-1] == ')' or newurl[-1] == '!':
       newurl = newurl[:-1]
-    newurls.append(newurl)
+    urls.append(newurl)
 
-  print newurls
-  p = Pool(3)
-  for result in p.map(getPermalink,newurls):
-    text_test = text_test.replace(result[0],result[1])
+
+  p = Pool(5)
+  conversion = {}
+  for result in p.map(getPermalink, list(set(urls))):
+    conversion[result[0]] = result[1]    
   p.terminate()
+
+  curPos = 0
+  for url in urls:
+    if url in text_test[curPos:]:
+      print url
+      print conversion[url]
+      print text_test[curPos:]
+      newPos = text_test.index(url)
+      text_test = text_test[0:curPos] + text_test[curPos:].replace(url,conversion[url],1)
+      curPos = newPos
+
   return text_test
+
+
+print replaceText("First one http://www.google.com and then http://www.yahoo.com/ or https://news.google.com/news the next one http://www.google.com/about and thats it")
