@@ -10,6 +10,14 @@ Link rot can be combated in several ways.
 2. Use a [permanent web framework](http://ipfs.io/). Our current web protocol has many nodes of failure, while newer hypermedia frameworks seek a more distributed protocol with builtin content identies that would allow data to permanently be available.
 3. Only link to archiving sites like the [Internet Archive](https://archive.org/web/) or [perma.cc](https://perma.cc/). **My little program I've written helps to combat link rot by providing a simple and easy way to convert all your links to an archived link.**
 
+# Install and Run
+
+## Install
+
+## Demo
+
+Try the demo [here](http://permalinker.duckdns.org/).
+
 # References
 
 1. Markwell, John, and David W. Brooks. "“Link rot” limits the usefulness of web‐based educational materials in biochemistry and molecular biology*." Biochemistry and Molecular Biology Education 31.1 (2003): 69-72.
