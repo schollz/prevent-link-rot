@@ -60,4 +60,3 @@ def replaceText(text_test):
   return text_test
 
 
-print replaceText("First one http://www.google.com and then http://www.yahoo.com/ or https://news.google.com/news the next one http://www.google.com/about and thats it")
