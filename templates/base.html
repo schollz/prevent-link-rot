@@ -30,6 +30,7 @@
 <div id="notloading">
 <div class="row">
 <p class="lead">Don't let your links rot! Type in any series of links, or text with links, and this tool will automatically make them permanent!</p>
+<p>Supports Markdown, HTML, or any sort of text or links.</p>
 </div>
 
 <div class = "row">
@@ -89,6 +90,7 @@ $notloading.show();
                   data: {text:$("textarea#inputtext").val()},
                   dataType: 'json',
                   success: function(result){
+                      console.log(result)
                       $("textarea#outputtext").val(result.text);
                   }
               });

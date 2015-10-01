@@ -25,13 +25,17 @@ def getPermalink(url):
   if r.status_code == 403:
     return url,url
   else:
-    return url,'https://web.archive.org' + r.headers['content-location']
+    try:
+      return url,'https://web.archive.org' + r.headers['content-location']
+    except:
+      print url
+      return url,url
   
 
 def replaceText(text_test):
   newurls = []
   for url in  re.findall(r'(https?://[^\s]+)', text_test):
-    newurl = url
+    newurl = url.split('"')[0].split('<')[0]
     while newurl[-1] == '.' or newurl[-1] == ')' or newurl[-1] == '!':
       newurl = newurl[:-1]
     newurls.append(newurl)
@@ -39,5 +43,5 @@ def replaceText(text_test):
   p = Pool(3)
   for result in p.map(getPermalink,newurls):
     text_test = text_test.replace(result[0],result[1])
-
+  print "Finished"
   return text_test
