@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 import sys
 import re
-from multiprocessing import Pool
+import json
+from multiprocessing import Pool, cpu_count
+
 import requests
+
+from settings import *
 
 
 
@@ -13,7 +17,7 @@ def isurl(s):
         return False
 
   
-def getPermalink(url):
+def getWebArchiveLink(url):
   # will need to handle cases that it can't find, like for http://w3techs.com/technologies/overview/javascript_library/all
   if 'web.archive' in url:
     return url,url
@@ -30,25 +34,49 @@ def getPermalink(url):
     except:
       print url
       return url,url
+    
+def getPermaccLink(dat):
+  # will need to handle cases that it can't find, like for http://w3techs.com/technologies/overview/javascript_library/all
+  url = dat[0]
+  apikey = dat[1]
+  payload = {'url': url, 'title': url}
+  permacc_url =  'https://api.perma.cc/v1/archives/?api_key=' + apikey
+  r = requests.post(permacc_url, data = json.dumps(payload))
+  print r.status_code
+  if r.status_code == 201:
+    result = json.loads(r.text)
+    print json.dumps(result,indent=4)
+    return url,str('http://perma.cc/' + result['guid'])
+  else:
+    return url,url
   
 
-def replaceText(text_test):
+def replaceText(text_test,apikey):
   urls = []
+  urls_in_order = []
   for url in  re.findall(r'(https?://[^\s]+)', text_test):
     newurl = url.split('"')[0].split('<')[0]
     while newurl[-1] == '.' or newurl[-1] == ')' or newurl[-1] == '!':
       newurl = newurl[:-1]
-    urls.append(newurl)
+    if not apikey:
+      urls.append(newurl)
+    else:
+      urls.append((newurl,apikey))
+    urls_in_order.append(newurl)
 
 
-  p = Pool(5)
+  f = getWebArchiveLink
+  if apikey:
+    f = getPermaccLink
+  p = Pool(cpu_count())
   conversion = {}
-  for result in p.map(getPermalink, list(set(urls))):
+  for result in p.map(f, list(set(urls))):
     conversion[result[0]] = result[1]    
   p.terminate()
 
+  print conversion
   curPos = 0
-  for url in urls:
+  for url in urls_in_order:
     if url in text_test[curPos:]:
       print url
       print conversion[url]
@@ -57,6 +85,7 @@ def replaceText(text_test):
       text_test = text_test[0:curPos] + text_test[curPos:].replace(url,conversion[url],1)
       curPos = newPos
 
-  return text_test
+  return text_test  
+
 
 
