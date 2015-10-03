@@ -36,6 +36,10 @@ Goto ```http://127.0.0.1:8012/``` to use the web page to convert links.
 
 Try the demo [here](http://permalinker.duckdns.org/).
 
+## Todo
+
+- Determine relative links and fill in the original address to be able to convert
+
 # References
 
 1. Markwell, John, and David W. Brooks. "“Link rot” limits the usefulness of web‐based educational materials in biochemistry and molecular biology*." Biochemistry and Molecular Biology Education 31.1 (2003): 69-72.

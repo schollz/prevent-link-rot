@@ -43,7 +43,7 @@ def getPermaccLink(dat):
   if r.status_code == 201:
     result = json.loads(r.text)
     print json.dumps(result,indent=4)
-    return url,str('http://perma.cc/' + result['guid'])
+    return url,str('http://perma.cc/' + result['guid'] + '?type=source')
   else:
     return url,url
   

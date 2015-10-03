@@ -65,28 +65,54 @@
     </nav>
 
     <!-- Intro Section -->
-    <section id="intro" class="intro-section">
+ <section class="intro-section" id="intro">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Permalinker</h1>
-                    <p class="lead">Don't let your links rot! Type in any series of links, or text with links, and this tool will automatically make them permanent! Supports Markdown, HTML, or any sort of text or links.</p>
-                    <p>Automatically uses the <a href="https://archive.org/index.php">Internet Archive</a>. If you'd like to use <a href="https://perma.cc/login">perma.cc</a> instead, simply enter your <a href="https://perma.cc/settings/tools" target="_blank">API key</a>.</p>
-                    <textarea placeholder="Type in text or links or both." rows="10" style="width:100%;" name="comment[text]" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" id="inputtext"></textarea>
-                </div>
-                <div class="col-xs-12">
-<form class="form-inline" action="javascript:void(0);">
-  <div class="form-group">
-    <label class="sr-only" for="apikey">Perm.cc API key</label>
-    <input type="input" class="form-control" id="apikey" placeholder="Perm.cc API key">
-  </div>
-  <button type="submit" class="btn btn-default" id="submitbutton">Generate permalinks!</button>
-</form>
 
+                    <p class="lead">Don't let your links rot! Type in any
+                    series of links, or text with links, and this tool will
+                    automatically make them permanent! Supports Markdown, HTML,
+                    or any sort of text or links.</p>
+
+                    <p>Automatically uses the <a href=
+                    "https://archive.org/index.php">Internet Archive</a>. If
+                    you'd like to use <a href=
+                    "https://perma.cc/login">perma.cc</a> instead, simply enter
+                    your <a href="https://perma.cc/settings/tools" target=
+                    "_blank">API key</a>.</p>
+                    <textarea class="ui-autocomplete-input" id="inputtext"
+                    name="comment[text]" placeholder=
+                    "Type in text or links or both." rows="10" style=
+                    "width:100%;">
+</textarea>
                 </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-5 col-xs-offset-2">
+                    <label class="sr-only" for="apikey">Perm.cc API key</label>
+                    <input class="form-control" id="apikey" placeholder=
+                    "perm.cc API key (optional)" type="input">
+                </div>
+
+                <div class="col-xs-2">
+                    <p style="text-align: left"><button class="btn btn-primary"
+                    id="submitbutton" type="submit">Generate
+                    permalinks!</button></p>
+                </div>
+
+                <div class="col-xs-3"></div>
+            </div>
+
+            <div class="row">
                 <div class="col-lg-12">
-                    <textarea placeholder="Type in text or links or both." rows="10" style="width:100%;" name="comment[text]" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" id="outputtext"></textarea>
-                </div>
+                    <textarea class="ui-autocomplete-input" id="outputtext"
+                    name="comment[text]" placeholder=
+                    "Type in text or links or both." rows="10" style=
+                    "width:100%;">
+</textarea>
                 </div>
             </div>
         </div>
@@ -97,11 +123,11 @@
     <section id="about" class="about-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-xs-4 col-xs-offset-4">
                     <h1>Generating</h1>
-                    <center>
+
 <img src="http://www.ibm.com/social-business/us/en/images/socbiz-loader.gif" width=100px>
-</center>
+
                 </div>
             </div>
         </div>
