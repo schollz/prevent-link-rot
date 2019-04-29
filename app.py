@@ -12,7 +12,7 @@ def hello():
 @app.route('/permanize', methods=['POST', 'OPTIONS'])
 def my_service():
 	request.get_json(force=True)
-	print request.json
+	print(request.json)
 	text = request.json['text']
 	if 'apikey' in request.json and len(request.json['apikey'])>0:
 		return jsonify(text=replaceText(text,request.json['apikey']))

@@ -20,7 +20,7 @@ def getWebArchiveLink(url):
     return url,url
   try:
     r = requests.get('https://web.archive.org/save/' + url)
-    print "Got permanent link for " + url
+    print("Got permanent link for " + url)
   except:
     return url,url
   if r.status_code == 403:
@@ -29,7 +29,7 @@ def getWebArchiveLink(url):
     try:
       return url,'https://web.archive.org' + r.headers['content-location']
     except:
-      print url
+      print(url)
       return url,url
     
 def getPermaccLink(dat):
@@ -39,10 +39,10 @@ def getPermaccLink(dat):
   payload = {'url': url, 'title': url}
   permacc_url =  'https://api.perma.cc/v1/archives/?api_key=' + apikey
   r = requests.post(permacc_url, data = json.dumps(payload))
-  print r.status_code
+  print(r.status_code)
   if r.status_code == 201:
     result = json.loads(r.text)
-    print json.dumps(result,indent=4)
+    print(json.dumps(result,indent=4))
     return url,str('http://perma.cc/' + result['guid'] + '?type=source')
   else:
     return url,url
@@ -71,13 +71,13 @@ def replaceText(text_test,apikey):
     conversion[result[0]] = result[1]    
   p.terminate()
 
-  print conversion
+  print(conversion)
   curPos = 0
   for url in urls_in_order:
     if url in text_test[curPos:]:
-      print url
-      print conversion[url]
-      print text_test[curPos:]
+      print(url)
+      print(conversion[url])
+      print(text_test[curPos:])
       newPos = text_test.index(url)
       text_test = text_test[0:curPos] + text_test[curPos:].replace(url,conversion[url],1)
       curPos = newPos
