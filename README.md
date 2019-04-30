@@ -16,6 +16,15 @@ Link rot can be combated in several ways.
 
 ![Screenshot](http://i.imgur.com/LSM8HUU.jpg)
 
+## Command line utility
+
+```bash
+$ python3 plr.py -if inputfile -of outputfile
+```
+
+Plr.py's file options are totally optional. It can read from a file and output to stdio, or vice versa
+
+
 ## Install
 
 ```bash
