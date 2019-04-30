@@ -17,7 +17,7 @@ def main():
     else:
         linkfunc = getWebArchiveLink
     if args.output.name != '<stdout>':
-        writeoutput = output.write
+        writeoutput = args.output.write
     else:
         writeoutput = print
     for line in args.input:
@@ -25,4 +25,7 @@ def main():
             writeoutput(linkfunc(line)[1])
         else:
             print("Not a url, skipping")
+
+if __name__ == '__main__':
+    main()
 
