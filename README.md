@@ -49,6 +49,10 @@ Try the demo [here](http://permalinker.duckdns.org/).
 
 - Determine relative links and fill in the original address to be able to convert
 
+- Fix permacc links
+
+- Add citation formatting options for output
+
 # References
 
 1. Markwell, John, and David W. Brooks. "“Link rot” limits the usefulness of web‐based educational materials in biochemistry and molecular biology*." Biochemistry and Molecular Biology Education 31.1 (2003): 69-72.
