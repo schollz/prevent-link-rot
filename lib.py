@@ -32,21 +32,6 @@ def getWebArchiveLink(url):
       print(url)
       return url,url
     
-def getPermaccLink(dat):
-  # will need to handle cases that it can't find, like for http://w3techs.com/technologies/overview/javascript_library/all
-  url = dat[0]
-  apikey = dat[1]
-  payload = {'url': url, 'title': url}
-  permacc_url =  'https://api.perma.cc/v1/archives/?api_key=' + apikey
-  r = requests.post(permacc_url, data = json.dumps(payload))
-  print(r.status_code)
-  if r.status_code == 201:
-    result = json.loads(r.text)
-    print(json.dumps(result,indent=4))
-    return url,str('http://perma.cc/' + result['guid'] + '?type=source')
-  else:
-    return url,url
-  
 
 def replaceText(text_test,apikey):
   urls = []
