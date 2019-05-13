@@ -20,12 +20,12 @@ def main():
         writeoutput = args.output.write
     else:
         writeoutput = print
-    for line in args.input:
-        if isurl(line):
-            writeoutput(linkfunc(line)[1])
-        else:
-            print("Not a url, skipping")
+
+        content = args.input.read()
+        content = replaceText(content,False)
+        writeoutput(content)
+
+            # writeoutput(type(args.input))
 
 if __name__ == '__main__':
     main()
-
