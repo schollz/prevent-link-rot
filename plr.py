@@ -21,11 +21,9 @@ def main():
     else:
         writeoutput = print
 
-        content = args.input.read()
-        content = replaceText(content,False)
-        writeoutput(content)
-
-            # writeoutput(type(args.input))
-
+    content = args.input.read()
+    content = replaceText(content,False)
+    writeoutput(content)
+        
 if __name__ == '__main__':
     main()
