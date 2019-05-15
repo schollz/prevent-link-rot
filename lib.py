@@ -45,9 +45,7 @@ def replaceText(text_test, archiveList=False):
     conversion[result[0]] = result[1]
   p.terminate()
   if archiveList:
-    returnList = [conversion[i] for i in list(conversion.keys())]
-    returnList.reverse()
-    return returnList
+    return [conversion[i] for i in list(conversion.keys())]
   else:
     curPos = 0
     for url in urls_in_order:
