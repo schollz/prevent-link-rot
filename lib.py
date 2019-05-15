@@ -33,6 +33,7 @@ def replaceText(text_test, archiveList=False):
   urls_in_order = []
   for url in  re.findall(r'(https?://[^\s]+)', text_test):
     newurl = url.split('"')[0].split('<')[0]
+    print(newurl)
     while newurl[-1] == '.' or newurl[-1] == ')' or newurl[-1] == '!':
       newurl = newurl[:-1]
       urls.append(newurl)
@@ -45,7 +46,8 @@ def replaceText(text_test, archiveList=False):
     conversion[result[0]] = result[1]
   p.terminate()
   if archiveList:
-    return [conversion[i] for i in list(conversion.keys())]
+    return [conversion[i] for i in list(conversion.keys())
+            if not i.endswith(")")]
   else:
     curPos = 0
     for url in urls_in_order:
@@ -54,6 +56,3 @@ def replaceText(text_test, archiveList=False):
         text_test = text_test[0:curPos] + text_test[curPos:].replace(url,conversion[url],1)
         curPos = newPos
   return text_test
-
-
-fuck = replaceText("[Test](https://bestmotherfucking.website) [ever](https://stackoverflow.com/questions/4823468/comments-in-markdown)", archiveList=True)

@@ -17,9 +17,14 @@ def main():
         writeoutput = args.output.write
     else:
         writeoutput = print
+    print(args.output.name)
     if args.input.name != '<stdin>':
         content = args.input.read()
         content = replaceText(content, archiveList=args.listy)
+    if type(content) == list:
+        for i in content:
+            writeoutput(i + '\n')
+    else:
         writeoutput(content)
 if __name__ == '__main__':
-    fuck = main()
+    main()
