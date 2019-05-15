@@ -1,59 +1,65 @@
-# Prevent Link Rot
+# Description
 
-**Link rot** is real, it is common, and it is pervasive. What is **link rot**? Link rot is essentially *the process by which hyperlinks cease to function, usually because the web page or server they point to has moved or has become permanently unavailable*. It has existed since the internet began. An example of its influence can be seen as recently as 2000, when [a study](http://dx.doi.org/10.1002/bmb.2003.494031010165) found that within 24 months, 50% of .com domains and 20% of .gov domains were no longer viable. [1] [Another study](http://dx.doi.org/10.1017/S1472669614000255) found that 70% of links in Harvard Law Review and 50% of links within the United States Supreme Court opinions are no longer viable. [2] If we are to take the internet as a primary resource seriously, then we seriously need to think about undertaking a better way of long-term preservation of link contents.
+plr is a command-line utility that can help prevent link rot by
+automatically archiving links to the [Internet
+Archive](https://archive.org). It works on markdown or plain text.
 
-## How stop link rot
+# Installation
 
-Link rot can be combated in several ways.
-
-1. Use a [digital object identifier](http://www.doi.org/) which provides persistent and actionable identification. The a website under a DOI changes, it can be changed in the DOI service so that the unique DOI identifier always links to the most up-to-date material.
-2. Use a [permanent web framework](http://ipfs.io/). Our current web protocol has many nodes of failure, while newer hypermedia frameworks seek a more distributed protocol with builtin content identies that would allow data to permanently be available.
-3. Only link to archiving sites like the [Internet Archive](https://archive.org/web/) or [perma.cc](https://perma.cc/). **My little program I've written helps to combat link rot by providing a simple and easy way to convert all your links to an archived link.**
-
-# Install and Run
-
-## Snapshot
-
-![Screenshot](http://i.imgur.com/LSM8HUU.jpg)
-
-## Command line utility
-
-```bash
-$ python3 plr.py -if inputfile -of outputfile
-```
-
-Plr.py's file options are totally optional. It can read from a file and output to stdio, or vice versa
-
-
-## Install
+TODO: AUR package, double check the following commands:
 
 ```bash
 $ virtualenv -p /usr/bin/python venv
 $ source venv/bin/activate
-(venv)$ pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
-## And run
+# Usage
 
 ```bash
-(venv)$ python app.py
+$plr -if inputfile.md -of outputfile.md
 ```
 
-Goto ```http://127.0.0.1:8012/``` to use the web page to convert links.
+plr's file arguments are optional; it defaults to standard input and
+output.
 
-## Demo
+TODO: to return just a list of links, add the command-line flag `-list`
 
-Try the demo [here](http://permalinker.duckdns.org/).
+# About
+
+**Link rot** is real, it is common, and it is pervasive. What is
+**link rot**? Link rot is essentially *the process by which hyperlinks
+cease to function, usually because the web page or server they point
+to has moved or has become permanently unavailable*. It has existed
+since the internet began. An example of its influence can be seen as
+recently as 2000, when [a
+study](http://dx.doi.org/10.1002/bmb.2003.494031010165) found that
+within 24 months, 50% of .com domains and 20% of .gov domains were no
+longer viable. [1] [Another
+study](http://dx.doi.org/10.1017/S1472669614000255) found that 70% of
+links in Harvard Law Review and 50% of links within the United States
+Supreme Court opinions are no longer viable. [2] If we are to take the
+internet as a primary resource seriously, then we seriously need to
+think about undertaking a better way of long-term preservation of link
+contents.
+
+This is a fork of
+[schollz/prevent-link-rot](https://github.com/schollz/prevent-link-rot).
+Full credit for the original library and logic should go to
+[schollz](https://github.com/schollz). This fork cannibalizes the
+project with a [KISS](https://en.wikipedia.org/wiki/KISS_principle)
+attitude. The goal is to create a small but useful command-line
+utility and an accompanying library that can be integrated into other
+projects.
 
 ## Todo
 
-- Determine relative links and fill in the original address to be able to convert
+- return a list of links instead of the full markdown contents with the `-list` command-line flag
 
-- Fix permacc links
+- add the archive links *commented out* to the markdown content so the admin can un-comment as needed
 
-- Add citation formatting options for output
+- automatically ignore links that don't work (like nytimes) or provide alternative methods for them
 
-# References
+- allow domain whitelists (so you aren't archiving links to your own website automatically)
 
-1. Markwell, John, and David W. Brooks. "“Link rot” limits the usefulness of web‐based educational materials in biochemistry and molecular biology*." Biochemistry and Molecular Biology Education 31.1 (2003): 69-72.
-2. Zittrain, Jonathan, Kendra Albert, and Lawrence Lessig. "Perma: Scoping and addressing the problem of link and reference rot in legal citations." Legal Information Management 14.02 (2014): 88-99.
+- Detect relative links and fill in the original address to be able to convert (need a command-line option for the baseurl)

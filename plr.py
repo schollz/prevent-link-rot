@@ -7,25 +7,19 @@ def parseargs():
                         default=sys.stdin, action='store', dest='input')
     parser.add_argument('-of', nargs='?', type=argparse.FileType('w'),
                          default=sys.stdout, action='store', dest='output')
-    parser.add_argument('-permacc', action='store_true')
     return parser.parse_args()
 
 def main():
     args = parseargs()
-    if args.permacc:
-        linkfunc = getPermaccLink
-    else:
-        linkfunc = getWebArchiveLink
+    linkfunc = getWebArchiveLink
     if args.output.name != '<stdout>':
         writeoutput = args.output.write
     else:
         writeoutput = print
-    for line in args.input:
-        if isurl(line):
-            writeoutput(linkfunc(line)[1])
-        else:
-            print("Not a url, skipping")
 
+    content = args.input.read()
+    content = replaceText(content,False)
+    writeoutput(content)
+        
 if __name__ == '__main__':
     main()
-
