@@ -54,7 +54,7 @@ projects.
 
 ## Todo
 
-- return a list of links instead of the full markdown contents with the `-list` command-line flag
+- ~~return a list of links instead of the full markdown contents with the `-list` command-line flag~~
 
 - add the archive links *commented out* to the markdown content so the admin can un-comment as needed
 
@@ -63,3 +63,6 @@ projects.
 - allow domain whitelists (so you aren't archiving links to your own website automatically)
 
 - Detect relative links and fill in the original address to be able to convert (need a command-line option for the baseurl)
+    - Find Relative Links
+    - Figure out if link is relative to root, or directory ("./" or "/", or "")
+    - Join Links
