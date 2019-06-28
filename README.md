@@ -9,7 +9,7 @@ Archive](https://archive.org). It works on markdown or plain text.
 TODO: AUR package, double check the following commands:
 
 ```bash
-$ virtualenv -p /usr/bin/python venv
+$ python3 -m venv .
 $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
